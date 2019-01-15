@@ -9,3 +9,4 @@ id_rsa.pub
 *.iml
 .idea
 env-vars
+env-vars.sh	
