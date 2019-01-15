@@ -11,6 +11,13 @@ resource "oci_core_virtual_network" "LbVcn" {
     dns_label = "lbvcn"
 }
 
+resource "oci_core_virtual_network" "LbVcn1" {
+    cidr_block = "${var.vcn_cidr1}"
+    compartment_id = "${var.compartment_ocid}"
+    display_name = "LbVcn"
+    dns_label = "lbvcn"
+}
+
 resource "oci_core_internet_gateway" "LbIgw" {
     compartment_id = "${var.compartment_ocid}"
     display_name = "LbIgw"
@@ -52,7 +59,14 @@ resource "oci_core_security_list" "LbSecurityList" {
         icmp_options {
             "type" = 3
             "code" = 4
-        }
+        },
+        {
+            protocol = "8"
+            source = "0.0.0.0/0"
+            tcp_options {
+                "min" = 80
+                "max" = 80
+            }
     }]
 }
 

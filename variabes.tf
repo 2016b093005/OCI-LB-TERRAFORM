@@ -35,6 +35,9 @@ variable "InstanceImageOCID" {
 variable "vcn_cidr" {
     default = "10.0.0.0/16"
 }
+variable "vcn_cidr1" {
+    default = "10.0.0.0/16"
+}
 
 variable "lb1_subnet_cidr" {
     default = "10.0.0.0/24"
